@@ -52,6 +52,15 @@ public class TaskController {
     }
 
 
+    @PostMapping(value="/{id}/delete-task")
+    public ResponseEntity<Map<String,Object>> deleteTask(@PathVariable Long id){
+        Task deleteTask = taskService.deleteTask(id);
+        Map<String,Object> response = new HashMap<>();
+        response.put("message","Task Deleted Successfully");
+        response.put("data",deleteTask);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
 
 
 
